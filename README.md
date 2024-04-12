@@ -1,5 +1,4 @@
-# AngularIntermediate
-Angular intermediate training
+# Angular intermediate training
 
 The main branch contains the final solution. 
 
