@@ -5,6 +5,9 @@ import { JokeCardComponent } from './joke-card/joke-card.component';
 
 
 @NgModule({
+  exports: [
+    JokeCardComponent
+  ],
   declarations: [
     JokeCardComponent
   ],
