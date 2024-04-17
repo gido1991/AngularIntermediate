@@ -4,5 +4,13 @@
   </mat-card-header>
   <mat-card-content>
     <p>{{ joke.content }}</p>
+    <strong>Comments</strong>
+    <ng-container [ngSwitch]="comments.length">
+      <p *ngSwitchCase="0">No comments to display</p>
+      <p *ngSwitchCase="1">{{comments[0]}}</p>
+      <ul *ngSwitchDefault>
+        <li *ngFor="let comment of comments">{{comment}}</li>
+      </ul>
+    </ng-container>
   </mat-card-content>
 </mat-card>
