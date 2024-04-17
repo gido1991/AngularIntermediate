@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JokeCardComponent } from './joke-card/joke-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { JokeDetailsRoutingModule } from './joke-details-routing.module';
 
 
 
@@ -14,7 +15,8 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    JokeDetailsRoutingModule
   ]
 })
 export class JokeDetailsModule { }
