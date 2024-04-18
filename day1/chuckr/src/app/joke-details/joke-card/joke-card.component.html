@@ -12,5 +12,38 @@
         <li *ngFor="let comment of comments">{{comment}}</li>
       </ul>
     </ng-container>
+
+    <!-- Start of template driven form -->
+    <div class="fields-container">
+      <form #newJokeForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Comment</mat-label>
+          <input matInput type="text" required minlength="4" [(ngModel)]="commentText" name="comment"
+            #jokeComment="ngModel" />
+          <ng-container *ngIf="!jokeComment.valid && jokeComment.touched">
+            <div *ngIf="jokeComment.errors && jokeComment.errors['required']">
+              <mat-error>Comment is required!</mat-error>
+            </div>
+            <div *ngIf="jokeComment.errors && jokeComment.errors['minlength']">
+              <mat-error>Comment be at least 4 characters long.</mat-error>
+            </div>
+          </ng-container>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Auhtor</mat-label>
+          <input matInput type="text" required [(ngModel)]="authorText" name="author"
+            #jokeAuthor="ngModel" />
+          <ng-container *ngIf="!jokeAuthor.valid && jokeAuthor.touched">
+            <div *ngIf="jokeAuthor.errors && jokeAuthor.errors['required']">
+              <mat-error>Author is required!</mat-error>
+            </div>
+          </ng-container>
+        </mat-form-field>
+        <button mat-button color="primary" type="submit" [disabled]="!newJokeForm.form.valid">Add</button>
+        <button mat-button color="warn" type="button" (click)="newJokeForm.reset()">Reset</button>
+      </form>
+    </div>
+
   </mat-card-content>
 </mat-card>
