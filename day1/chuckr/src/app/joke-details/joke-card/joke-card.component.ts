@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JokeModel } from '../JokeModel';
+import { JokeService } from '../joke.service';
 
 @Component({
   selector: 'app-joke-card',
@@ -7,10 +8,7 @@ import { JokeModel } from '../JokeModel';
   styleUrl: './joke-card.component.scss'
 })
 export class JokeCardComponent {
-  joke: JokeModel = {
-    title: 'Chuck Norris Joke',
-    content: 'Chuck Norris can divide by zero.'
-  }
+  joke: JokeModel | undefined;
   // no comments example
   // comments: string[] = [];
 
@@ -19,5 +17,9 @@ export class JokeCardComponent {
 
   // multiple comments example
   comments: string[] = ['very funny', '....', 'right on!'];
+
+  constructor(jokeService: JokeService) {
+    this.joke = jokeService.getJokeDetails();
+  }
 
 }
