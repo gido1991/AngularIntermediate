@@ -4,7 +4,7 @@ import { JokeCardComponent } from './joke-card/joke-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { JokeDetailsRoutingModule } from './joke-details-routing.module';
 import { JokeService } from './joke.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatButtonModule } from '@angular/material/button';
@@ -24,7 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [
     JokeService
