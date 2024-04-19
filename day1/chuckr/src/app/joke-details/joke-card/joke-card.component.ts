@@ -22,17 +22,18 @@ export class JokeCardComponent {
 
 
   jokeForm = new FormGroup({
-    commentText:  new FormControl('', [Validators.required, Validators.minLength(4)]),
-    authorText: new FormControl('',[Validators.required])
+    commentText: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    authorText: new FormControl('', [Validators.required])
   });
 
   constructor(jokeService: JokeService) {
-    this.joke = jokeService.getJokeDetails();
+    jokeService.getJokeDetails().subscribe(joke =>
+      this.joke = joke);
   }
 
   onSubmit() {
     const comment = this.jokeForm.get('commentText')?.value;
-    if(comment)
+    if (comment)
       this.comments.push(comment);
   }
 
