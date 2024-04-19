@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { JokeModel } from './JokeModel';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { JokeApiModel } from './jokeApiModel';
 
 @Injectable()
 export class JokeService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getJokeDetails(): Observable<JokeModel> {
-    return of({
-      title: 'Chuck Norris Joke',
-      content: 'Chuck Norris can divide by zero.'
-    });
+    return this.http.get<JokeApiModel>('https://api.chucknorris.io/jokes/random')
+      .pipe(map(joke => {
+        return { title: joke.id, content: joke.value }
+      }));
   }
 }
