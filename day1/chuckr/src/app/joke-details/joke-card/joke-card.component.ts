@@ -26,8 +26,12 @@ export class JokeCardComponent {
     authorText: new FormControl('', [Validators.required])
   });
 
-  constructor(jokeService: JokeService) {
-    jokeService.getJokeDetails().subscribe(joke =>
+  constructor(private jokeService: JokeService) {
+    this.refreshJoke();
+  }
+
+  refreshJoke(){
+    this.jokeService.getJokeDetails().subscribe(joke =>
       this.joke = joke);
   }
 

@@ -13,6 +13,8 @@
       </ul>
     </ng-container>
 
+    <button class="joke-button" (click)="refreshJoke()" mat-flat-button color="primary" >New Joke</button>
+
 
     <div class="fields-container">
       <form [formGroup]="jokeForm" (ngSubmit)="onSubmit()">
