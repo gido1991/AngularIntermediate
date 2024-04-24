@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { JokeModel } from '../JokeModel';
 
 @Component({
@@ -6,11 +6,20 @@ import { JokeModel } from '../JokeModel';
   templateUrl: './joke-card.component.html',
   styleUrl: './joke-card.component.scss'
 })
-export class JokeCardComponent {
-  joke: JokeModel = {
-    title: 'Chuck Norris Joke',
-    content: 'Chuck Norris can divide by zero.'
+export class JokeCardComponent implements OnInit {
+  @Input() jokeTitle: string | undefined;
+
+  joke: JokeModel | undefined;
+
+
+  ngOnInit(): void {
+    if (this.jokeTitle)
+    this.joke = {
+      title: this.jokeTitle,
+      content: 'Chuck Norris can divide by zero.'
+    }
   }
+
 
 
 }
