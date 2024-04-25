@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { JokeModel } from '../JokeModel';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-joke-card',
@@ -11,6 +12,10 @@ export class JokeCardComponent {
     title: 'Chuck Norris Joke',
     content: 'Chuck Norris can divide by zero.'
   }
+
+  constructor(private route: ActivatedRoute, private router: Router) {
+  }
+
   // no comments example
   // comments: string[] = [];
 
@@ -19,5 +24,14 @@ export class JokeCardComponent {
 
   // multiple comments example
   comments: string[] = ['very funny', '....', 'right on!'];
+
+  ngOnInit(): void {
+    // const id = this.route.snapshot.params['id'];
+    // this.joke = {
+    //   ...this.joke,
+    //   title: `${this.joke.title} : ${id}`,
+    // };
+    this.router.navigateByUrl('');
+  }
 
 }
