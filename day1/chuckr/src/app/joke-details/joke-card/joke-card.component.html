@@ -18,7 +18,7 @@
       <form [formGroup]="jokeForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
           <mat-label>Comment</mat-label>
-          <input matInput type="text" required minlength="4" formControlName="commentText" name="comment" />
+          <input matInput type="text" formControlName="commentText" name="comment" />
           <ng-container *ngIf="jokeForm.controls['commentText'].touched &&
           !jokeForm.controls['commentText'].valid &&
           jokeForm.controls['commentText'].errors">
@@ -33,7 +33,7 @@
 
         <mat-form-field>
           <mat-label>Auhtor</mat-label>
-          <input matInput type="text" required formControlName="authorText" name="author"
+          <input matInput type="text" formControlName="authorText" name="author"
              />
           <ng-container *ngIf="jokeForm.controls['authorText'].touched &&
           !jokeForm.controls['authorText'].valid &&
